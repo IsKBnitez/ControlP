@@ -50,10 +50,10 @@ function ConsultarTablasM(valor) { //tabla modal usuarios
         var registros = eval(respuesta);
 
         html ="<table id='resultados' class='table table-responsive'><thead>";
-        html +="<tr><th>#</th><th>N° Registro</th><th>Usuario</th><th>Contraseña</th><th>Tipo de Usuario</th></tr>";
+        html +="<tr><th>#</th><th>N° Registro</th><th>Usuario</th><th>Tipo de Usuario</th></tr>";
         html +="</thead>  <tbody>";
         for (var i = 0; i < registros.length; i++) {
-          html+="<tr><td></td><td>"+registros[i]["id_us"]+"</td><td>"+registros[i]["usuario"]+"</td><td>"+registros[i]["contra"]+"</td><td>"+registros[i]["tipo"]+"</td></tr>";
+          html+="<tr><td></td><td>"+registros[i]["id_us"]+"</td><td>"+registros[i]["usuario"]+"</td><td>"+registros[i]["tipo"]+"</td></tr>";
         };
         html +="</tbody></table>";
         $("#tabla").html(html);

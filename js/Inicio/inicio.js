@@ -55,7 +55,7 @@ function ConsultarTablasM(valor) { //tabla modal usuarios
         for (var i = 0; i < registros.length; i++) {
           html+="<tr><td></td><td>"+registros[i]["id_us"]+"</td><td>"+registros[i]["usuario"]+"</td><td>"+registros[i]["tipo"]+"</td></tr>";
         };
-        html +="</tbody></table>";
+        html +="</tbody>zzddd</table>";
         $("#tabla").html(html);
       }
     });

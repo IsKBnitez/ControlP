@@ -6,7 +6,7 @@ $.post(url+"cMateria/carrera",
           function(data) {//imprimir combobox
             var tipo = JSON.parse(data);
             $.each(tipo,function(i,item) {
-                $('#tp').append('<option value="' +item.id_ca + '">'+item.nombre+'</option>')
+                $('#tp').append('<option value="' +item.id_facultad + '">'+item.nombre_f+'</option>')
             });
           });
           $("#tp").change(function() {
@@ -22,7 +22,7 @@ $.post(url+"cMateria/carrera",
           function(data) {//imprimir combobox
             var tipo = JSON.parse(data);
             $.each(tipo,function(i,item) {
-                  $('#tp2').append('<option value="' +item.id_ca + '">'+item.nombre+'</option>')
+                  $('#tp2').append('<option value="' +item.id_facultad + '">'+item.nombre_f+'</option>')
               });
             });
             $("#tp2").change(function() {
@@ -83,7 +83,7 @@ function Consultar(valor) {
         html +="<tr><th>#</th><th>N° Registro</th><th>Codigo</th><th>Nombre</th><th>U.V</th><th>Carrera</th><th>Acciones</th></tr>";
         html +="</thead>  <tbody>";
         for (var i = 0; i < registros.length; i++) {
-          html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["codigo"]+"</td><td>"+registros[i]["nombre"]+"</td><td>"+registros[i]["uv"]+"</td><td>"+registros[i]["nombre1"]+"</td><td><a href='"+registros[i]["id_materia"]+"' class='btn btn-warning' data-toggle='modal' data-target='.bs-example-modal-sm'>E</a>  <button class='btn btn-danger' value='"+registros[i]["id_materia"]+"'>X</button></td></tr>";
+          html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["codigo"]+"</td><td>"+registros[i]["nombre"]+"</td><td>"+registros[i]["uv"]+"</td><td>"+registros[i]["nombre_f"]+"</td><td><a href='"+registros[i]["id_materia"]+"' class='btn btn-warning' data-toggle='modal' data-target='.bs-example-modal-sm'>E</a>  <button class='btn btn-danger' value='"+registros[i]["id_materia"]+"'>X</button></td></tr>";
         };
         html +="</tbody></table>";
         $("#tabla").html(html);

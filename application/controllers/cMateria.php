@@ -21,7 +21,7 @@ class Cmateria extends CI_Controller
 
   public function carrera() #combobox
   {
-    $result = $this->mMateria->carrera();
+    $result = $this->mMateria->facultad();
     echo json_encode($result);
   }
   public function guardar()
@@ -35,13 +35,13 @@ class Cmateria extends CI_Controller
       'codigo' =>$codigo,
       'nombre' =>$nombre,
       'uv' =>$uv,
-      'id_ca' =>$tipo, );
-      $datos1=array(
+      'id_facultad' =>$tipo, );
+      /*$datos1=array(
         'codigo' =>$codigo,
         'nombre' =>$nombre,
-        'id_ca' =>$tipo, );
+        'id_ca' =>$tipo, );*/
     if($this->mMateria->guardar($datos)==true){
-        if($this->mMateria->guardar1($datos1)==true){
+        //if($this->mMateria->guardar1($datos1)==true){
           echo "Registros Guardados";
         }
     else
@@ -51,7 +51,7 @@ class Cmateria extends CI_Controller
     show_404();
   }
 }
-}
+
 
 
 public function consultarIdCb()

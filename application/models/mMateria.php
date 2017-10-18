@@ -16,9 +16,14 @@ class Mmateria extends CI_Model
     $r= $this->db->get_where("carrera", "id_ca < 4");
     return $r->result();
   }
+
+  public function facultad(){
+    $r= $this->db->get_where("facultad", "id_facultad < 10");
+    return $r->result();
+  }
   public function consultarIdCb($valor)
   {
-    $consulta = $this->db->query("select id_ca from carrera where nombre='".$valor."';");
+    $consulta = $this->db->query("select id_facultad from facultad where nombre_f='".$valor."';");
     return $consulta->result();
   }
   public function guardar($data)
@@ -53,7 +58,7 @@ class Mmateria extends CI_Model
   }
   public function consultar($valor)
   {
-    $consulta = $this->db->query("select t1.id_materia as id_materia, t1.codigo as codigo, t1.nombre as nombre, t1.uv as uv, t2.nombre as nombre1 from materia t1 inner join carrera t2 on t1.id_ca = t2.id_ca where t1.nombre like '%".$valor."%';");
+    $consulta = $this->db->query("select t1.id_materia as id_materia, t1.codigo as codigo, t1.nombre as nombre, t1.uv as uv, t2.nombre_f as nombre_f from materia t1 inner join facultad t2 on t1.id_facultad = t2.id_facultad where t1.nombre like '%".$valor."%';");
     return $consulta->result();
   }
   public function modificar($id, $data)

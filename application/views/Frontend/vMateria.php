@@ -56,17 +56,24 @@
                                     <label>Nombre</label>
                                     <input class="form-control" id="nombre" required="require" placeholder="Nombre" name="nombre">
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Unidad Valorativa</label>
-                                    <input class="form-control" id="uv" required="require" placeholder="Unidad Valorativa" name="uv">
+                                    <label>UV</label>
+                                    <select name="uv" id="uv" class="form-control cent">
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    </select>
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Carrera</label>
+                                    <label>Facultad</label>
                                     <select class="form-control cent" name="tp" id="tp">
                                       <option value="0">:::Elija una opcion:::</option>
                                     </select>
                                     <input type="hidden" name="idcb" id="idcb" value="">
                                 </div>
+
+
                                 <div class="form-group cent">
                                     <button type="submit" class="btn btn-primary" id="guardar" name="button">Guardar</button>
                                 </div>
@@ -117,11 +124,14 @@
                                                   <input class="form-control" id="nombre2" placeholder="Nombre" name="nombre2">
                                               </div>
                                               <div class="form-group">
-                                                  <label>Unidad Valorativa</label>
-                                                  <input class="form-control" id="uv2" placeholder="Unidad Valorativa" name="uv2">
-                                              </div>
+                                              <label>UV</label>
+                                              <select name="uv" id="uv" class="form-control cent">
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              </select>
+                                          </div>
                                               <div class="form-group">
-                                                  <label>Carrera</label>
+                                                  <label>Facultad</label>
                                                   <select class="form-control cent" name="tp2" id="tp2">
                                                     <option value="0">:::Elija una opcion:::</option>
                                                   </select>

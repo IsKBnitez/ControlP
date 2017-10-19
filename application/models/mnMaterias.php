@@ -38,6 +38,11 @@ class mnmaterias extends CI_Model
       $materias = $this->db->get();
       return $materias->result();
   }
+
+  public function guardar($data){
+      return $this->db->insert("materia",$data);
+
+  }
    
 }
 ?>

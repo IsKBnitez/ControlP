@@ -44,8 +44,20 @@
                           <div class="col-lg-3">
                           </div>
                           <div class="col-lg-6">
-                            <form class="" id="form" action="<?php echo base_url();?>cMateria/guardar" method="post">
+                            <form class="" id="form" action="<?php echo base_url();?>cnMateria/guardar" method="post">
                               <table class="table-responsive">
+                              <?php if($this->session->flashdata("Done")): ?>
+                                <div class="alert alert-success">
+                                 <strong>Success!</strong> Indicates a successful or positive action.
+                                </div>
+                                <?php endif; ?>
+                                <?php if($this->session->flashdata("Error")):?>
+                                
+                                    <div class="alert alert-danger">
+                                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                                    </div>
+                                <?php endif;?>
+                                
                                 <div class="form-group">
 
                                     <input class="form-control" name="id" type="hidden">
@@ -73,11 +85,11 @@
                                       <option value="0">:::Elija una opcion:::</option>
                                         <?php if(!empty($facultad)): ?>
                                         <?php foreach($facultad as $facu): ?>
-                                        <option value="<?php echo $facu->id_facultad;?>"><?php echo $facu->nombre_f; ?></option>
+                                        <option name="facultad" value="<?php echo $facu->id_facultad;?>"><?php echo $facu->nombre_f; ?></option>
                                         <?php endforeach; ?>
                                         <?php endif;?>
                                     </select>
-                                    <input type="hidden" name="idcb" id="idcb" value="">
+                                    
                                 </div>
 
 

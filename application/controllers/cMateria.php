@@ -89,11 +89,11 @@ public function consultarIdCb()
       'codigo' =>$codigo,
       'nombre' =>$nombre,
       'uv' =>$uv,
-      'id_ca' =>$tipo, );
+      'id_facultad' =>$tipo, );
     $datos1=array(
       'codigo' =>$codigo,
       'nombre' =>$nombre,
-      'id_ca' =>$tipo, );
+      'id_facultad' =>$tipo, );
       $id1=$this->mMateria->ConsultarIDPre($codigo,$nombre);
     if($this->mMateria->modificar($id, $datos)==true){
           if($this->mMateria->modificar1($id1, $datos1)==true){

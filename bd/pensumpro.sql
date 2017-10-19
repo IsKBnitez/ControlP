@@ -1,146 +1,200 @@
-create database pensumpro;
-use pensumpro;
+/*
+SQLyog Enterprise v12.4.1 (64 bit)
+MySQL - 10.1.13-MariaDB : Database - pensumpro
+*********************************************************************
+*/
 
-select * from usuario;
-create table tipo_usuario(
-id_tpus int not null auto_increment primary key,
-tipo varchar(250) not null
-);
-insert into tipo_usuario values('0', 'Administrador');
-insert into tipo_usuario values('0', 'Usuario');
-insert into tipo_usuario values('0', 'Alumno');
+/*!40101 SET NAMES utf8 */;
 
-set  @idactual = (select  t1.id_us  from usuarios t1);
-select id_us  from usuario where id_us>@idactual order by id_us limit 1;
+/*!40101 SET SQL_MODE=''*/;
 
-select * from tipo_usuario where id_tpus <3;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`pensumpro` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-select id_alumno, nombre  from usuarios where not exists(select id_alumno from inscrip where usuarios.id_alumnoa=inscrip.id_alumno);
+USE `pensumpro`;
 
-create table usuario(
-id_us int not null auto_increment primary key,
-usuario varchar(500) not null,
-contra varchar(500) not null,
-id_tpus int not null,
-foreign key(id_tpus) references tipo_usuario(id_tpus) on delete cascade on update cascade
-);
-delete from usuario where id_us=5;
-select * from usuarios;
-create table usuarios(/*alumnos*/
-id_alumno int not null auto_increment primary key,
-nombre  varchar (300) not null,
-apellido varchar (300) not null,
-foto varchar (1000) not null,
-sexo varchar (50) not null,
-edad numeric(3) not null,
-numero_tel varchar(12) not null,
-email_alum  varchar (500) not null,
-id_us int not null,
-foreign key(id_us) references usuario(id_us) on delete cascade on update cascade
-);
-create table usuarios1(/*usuarios*/
-id_usuario int not null auto_increment primary key,
-nombre  varchar (300) not null,
-apellido varchar (300) not null,
-foto varchar (1000) not null,
-sexo varchar (50) not null,
-edad numeric(3) not null,
-numero_tel varchar(12) not null,
-email_usua  varchar (500) not null,
-id_us int not null,
-foreign key(id_us) references usuario(id_us) on delete cascade on update cascade
-);
-create table usuarios2(/*administardor*/
-id_admin int not null auto_increment primary key,
-nombre  varchar (300) not null,
-apellido varchar (300) not null,
-foto varchar (1000) not null,
-sexo varchar (50) not null,
-edad numeric(3) not null,
-numero_tel varchar(12) not null,
-email_admin  varchar (500) not null,
-id_us int not null,
-foreign key(id_us) references usuario(id_us) on delete cascade on update cascade
-);
+/*Table structure for table `bitacora_ingresos` */
 
-create table bitacora_ingresos(
-id_bit int not null auto_increment primary key,
-id_us int not null,
-foreign key(id_us) references usuario(id_us) on delete cascade on update cascade
-);
+DROP TABLE IF EXISTS `bitacora_ingresos`;
 
-create table carrera(
-id_ca int auto_increment not null primary key,
-nombre varchar(500) not null
-);
-select * from carrera;
-insert into carrera values (0,'Ingenieria');
+CREATE TABLE `bitacora_ingresos` (
+  `id_bit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_us` int(11) NOT NULL,
+  PRIMARY KEY (`id_bit`),
+  KEY `id_us` (`id_us`),
+  CONSTRAINT `bitacora_ingresos_ibfk_1` FOREIGN KEY (`id_us`) REFERENCES `usuario` (`id_us`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-create table materia(
-id_materia int auto_increment not null primary key,
-codigo varchar(7) not null,
-nombre varchar(500) not null,
-uv int not null,
-id_ca int not null,
-foreign key(id_ca) references carrera(id_ca) on delete cascade on update cascade
-);
-select t1.id_materia as id_materia, t1.codigo as codigo, t1.nombre as nombre, t1.uv as uv, t2.nombre as nombre1 from materia t1 inner join carrera t2 on t1.id_ca = t2.id_ca
-insert into materia values(0,'ETA','Etica',3,1);
-select t1.id_materia, t1.codigo, t1.nombre, t1.uv, t2.nombre from materia t1 inner join carrera t2 on t1.id_ca = t2.id_ca
+/*Data for the table `bitacora_ingresos` */
 
-create table prerequisito(
-id_pre int auto_increment not null primary key,
-codigo varchar(7) not null,
-nombre varchar(500) not null,
-id_ca int not null,
-foreign key(id_ca) references carrera(id_ca) on delete cascade on update cascade
-);
-select id_pre from prerequisito where prerequisito.codigo='aa' or prerequisito.nombre='asd';
- 
- select * from asignpre;
-create table asignpre(
-id_aspre int auto_increment not null primary key,
-id_materia int not null,
-foreign key(id_materia) references materia(id_materia) on delete cascade on update cascade,
-id_pre int not null,
-foreign key(id_pre) references prerequisito(id_pre) on delete cascade on update cascade
-);
+/*Table structure for table `carrera` */
 
-select a.id_aspre as id, b.nombre as n1, c.nombre as n2 from asignpre a inner join materia b on a.id_materia = b.id_materia inner join prerequisito c on a.id_pre = c.id_pre
-select id_materia from materia where nombre='aaa'
+DROP TABLE IF EXISTS `carrera`;
 
-select id_materia, nombre from materia where not exists(select id_materia from asignpre where materia.id_materia=asignpre.id_materia)
-insert into asignpre values('0',1,3)
-select id_materia, nombre from materia ;
+CREATE TABLE `carrera` (
+  `id_ca` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) NOT NULL,
+  PRIMARY KEY (`id_ca`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-select id_pre, nombre from prerequisito
+/*Data for the table `carrera` */
 
-create table ciclo(
-id_ciclo int auto_increment not null primary key,
-nombre_c varchar(50)
-)
+insert  into `carrera`(`id_ca`,`nombre`) values 
+(1,'Ingenieria');
 
-create table inscrip(
-id_ins int auto_increment not null primary key,
-id_alumno int not null,
-foreign key(id_alumno) references usuarios(id_alumno) on delete cascade on update cascade,
-id_ca int not null,
-foreign key(id_ca) references carrera(id_ca) on delete cascade on update cascade,
-id_ciclo int not null,
-foreign key(id_ciclo) references ciclo(id_ciclo) on delete cascade on update cascade,	
-);
-create table asigmate(
-id_asigm int auto_increment not null primary key,
-id_ins int not null,
-foreign key(id_ins) references inscrip(id_ins) on delete cascade on update cascade,
-id_materia int not null,
-foreign key(id_materia) references materia(id_materia) on delete cascade on update cascade
-);
-select nombre from usuarios
-select * from inscrip
+/*Table structure for table `facultad` */
 
+DROP TABLE IF EXISTS `facultad`;
 
-	
-select nombre as n  from usuarios where not exists(select id_alumno from inscrip where usuarios.id_alumno=inscrip.id_alumno) limit 1;
+CREATE TABLE `facultad` (
+  `id_facultad` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_f` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_facultad`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-select nombre as n  from usuarios where not exists(select id_alumno from inscrip where usuarios.id_alumno=inscrip.id_alumno) limit 1;
+/*Data for the table `facultad` */
+
+insert  into `facultad`(`id_facultad`,`nombre_f`) values 
+(1,'Ingenierias'),
+(2,'Odontologia'),
+(3,'Medicina'),
+(4,'Derecho'),
+(6,'Ciencias');
+
+/*Table structure for table `materia` */
+
+DROP TABLE IF EXISTS `materia`;
+
+CREATE TABLE `materia` (
+  `id_materia` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(7) DEFAULT NULL,
+  `nombre` varchar(500) DEFAULT NULL,
+  `uv` int(11) DEFAULT NULL,
+  `id_facultad` int(11) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id_materia`),
+  KEY `id_facultad` (`id_facultad`),
+  CONSTRAINT `materia_ibfk_2` FOREIGN KEY (`id_facultad`) REFERENCES `facultad` (`id_facultad`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+
+/*Data for the table `materia` */
+
+insert  into `materia`(`id_materia`,`codigo`,`nombre`,`uv`,`id_facultad`,`estado`) values 
+(20,'0001','Matematica I',3,1,0),
+(21,'0002','Matematica II',3,1,0),
+(22,'0003','Anatomia',3,3,0),
+(26,'2552','Ingles',4,2,0),
+(27,'2552','Matematica I',4,6,0),
+(28,'0002','Ingles',4,4,0),
+(29,'132','Contabilidad',4,2,0),
+(30,'0005','Estadistica',4,4,0);
+
+/*Table structure for table `tipo_usuario` */
+
+DROP TABLE IF EXISTS `tipo_usuario`;
+
+CREATE TABLE `tipo_usuario` (
+  `id_tpus` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_tpus`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tipo_usuario` */
+
+insert  into `tipo_usuario`(`id_tpus`,`tipo`) values 
+(1,'Administrador'),
+(2,'Usuario'),
+(3,'Alumno');
+
+/*Table structure for table `usuario` */
+
+DROP TABLE IF EXISTS `usuario`;
+
+CREATE TABLE `usuario` (
+  `id_us` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(500) NOT NULL,
+  `contra` varchar(500) NOT NULL,
+  `id_tpus` int(11) NOT NULL,
+  PRIMARY KEY (`id_us`),
+  KEY `id_tpus` (`id_tpus`),
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tpus`) REFERENCES `tipo_usuario` (`id_tpus`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `usuario` */
+
+insert  into `usuario`(`id_us`,`usuario`,`contra`,`id_tpus`) values 
+(3,'10121996','10121996',1);
+
+/*Table structure for table `usuarios` */
+
+DROP TABLE IF EXISTS `usuarios`;
+
+CREATE TABLE `usuarios` (
+  `id_alumno` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(300) NOT NULL,
+  `apellido` varchar(300) NOT NULL,
+  `foto` varchar(1000) NOT NULL,
+  `sexo` varchar(50) NOT NULL,
+  `edad` decimal(3,0) NOT NULL,
+  `numero_tel` varchar(12) NOT NULL,
+  `email_alum` varchar(500) NOT NULL,
+  `id_us` int(11) NOT NULL,
+  PRIMARY KEY (`id_alumno`),
+  KEY `id_us` (`id_us`),
+  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_us`) REFERENCES `usuario` (`id_us`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `usuarios` */
+
+/*Table structure for table `usuarios1` */
+
+DROP TABLE IF EXISTS `usuarios1`;
+
+CREATE TABLE `usuarios1` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(300) NOT NULL,
+  `apellido` varchar(300) NOT NULL,
+  `foto` varchar(1000) NOT NULL,
+  `sexo` varchar(50) NOT NULL,
+  `edad` decimal(3,0) NOT NULL,
+  `numero_tel` varchar(12) NOT NULL,
+  `email_usua` varchar(500) NOT NULL,
+  `id_us` int(11) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `id_us` (`id_us`),
+  CONSTRAINT `usuarios1_ibfk_1` FOREIGN KEY (`id_us`) REFERENCES `usuario` (`id_us`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `usuarios1` */
+
+/*Table structure for table `usuarios2` */
+
+DROP TABLE IF EXISTS `usuarios2`;
+
+CREATE TABLE `usuarios2` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(300) NOT NULL,
+  `apellido` varchar(300) NOT NULL,
+  `foto` varchar(1000) NOT NULL,
+  `sexo` varchar(50) NOT NULL,
+  `edad` decimal(3,0) NOT NULL,
+  `numero_tel` varchar(12) NOT NULL,
+  `email_admin` varchar(500) NOT NULL,
+  `id_us` int(11) NOT NULL,
+  PRIMARY KEY (`id_admin`),
+  KEY `id_us` (`id_us`),
+  CONSTRAINT `usuarios2_ibfk_1` FOREIGN KEY (`id_us`) REFERENCES `usuario` (`id_us`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `usuarios2` */
+
+insert  into `usuarios2`(`id_admin`,`nombre`,`apellido`,`foto`,`sexo`,`edad`,`numero_tel`,`email_admin`,`id_us`) values 
+(3,'kevin Elias','Benitez Prudencio','Captura_de_pantalla_(166)1.png','Masculino',22,'22222222','k@g.com',3);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

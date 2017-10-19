@@ -80,10 +80,10 @@ function Consultar(valor) {
         //alert(respuesta);
         var registros = eval(respuesta);
         html ="<table class='table table-striped ' id='resultados'><thead>";
-        html +="<tr><th>#</th><th>N° Registro</th><th>Codigo</th><th>Nombre</th><th>U.V</th><th>Carrera</th><th>Acciones</th></tr>";
+        html +="<tr><th>#</th><th>N° Registro</th><th>Codigo</th><th>Nombre</th><th>U.V</th><th>Facultad</th><th>Acciones</th></tr>";
         html +="</thead>  <tbody>";
         for (var i = 0; i < registros.length; i++) {
-          html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["codigo"]+"</td><td>"+registros[i]["nombre"]+"</td><td>"+registros[i]["uv"]+"</td><td>"+registros[i]["nombre_f"]+"</td><td><a href='"+registros[i]["id_materia"]+"' class='btn btn-warning' data-toggle='modal' data-target='.bs-example-modal-sm'>E</a>  <button class='btn btn-danger' value='"+registros[i]["id_materia"]+"'>X</button></td></tr>";
+          html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["codigo"]+"</td><td>"+registros[i]["nombre"]+"</td><td>"+registros[i]["uv"]+"</td><td>"+registros[i]["nombre_f"]+"</td><td><a href='"+registros[i]["id_materia"]+"' class='btn btn-warning glyphicon glyphicon-refresh' data-toggle='modal' data-target='.bs-example-modal-sm'></a> <button class='btn btn-danger glyphicon glyphicon-remove-circle' value='"+registros[i]["id_materia"]+"'></button><button class='btn btn-info glyphicon glyphicon-eye-close'></button></td></tr>";
         };
         html +="</tbody></table>";
         $("#tabla").html(html);
@@ -118,7 +118,7 @@ $("body").on("click", "#tbla a", function(event) {
         success:function (respuesta) {
           var tipo = JSON.parse(respuesta);
           $.each(tipo,function(i,item) {
-              Id2= item.id_ca ;
+              Id2= item.id_facultad ;
           });
 
         }

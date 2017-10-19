@@ -125,7 +125,7 @@
                                               </div>
                                               <div class="form-group">
                                               <label>UV</label>
-                                              <select name="uv" id="uv" class="form-control cent">
+                                              <select name="uv2" id="uv2" class="form-control cent">
                                               <option value="3">3</option>
                                               <option value="4">4</option>
                                               </select>

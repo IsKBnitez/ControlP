@@ -11,6 +11,9 @@
 
     <title>Control Pensum</title>
 
+    <!-- paginacion css -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables.net-bs/dataTables.bootstrap.min.css">
+
     <!-- Bootstrap Core CSS -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.js"></script>
     <link href="<?php echo base_url(); ?>css/bootstrap.css" rel="stylesheet">

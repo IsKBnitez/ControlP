@@ -10,6 +10,17 @@
 <script src="<?php echo base_url(); ?>js/doSearch.js"></script>
 <script src="<?php echo base_url(); ?>js/paging.js"></script>
 <script src="<?php echo base_url(); ?>js/jquery.js"></script>
+    <!-- PAGINACION -->
+    <script src="<?php echo base_url();?>assets/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+       $('#example1').DataTable();
+       $('.sidebar-menu').tree(); 
+    })
+    
+    </script>
 
 
     <!-- Bootstrap Core JavaScript -->

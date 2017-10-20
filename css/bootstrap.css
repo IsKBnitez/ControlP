@@ -10,8 +10,50 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+.codigo{
+  width: 130px;
+  background-color:rgb(21, 174, 235);
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-color: black;
+  
+}
+.id{
+  
+  width: 20px;
+  background-color:rgb(73, 73, 179);
+  margin-left: 130px;
+  margin-top: -22px;
+  border-color: black;
+  
+  border-top-right-radius: 5px;
+}
+.nombre{
+  width: 150px;
+  background-color:yellow;
+  height: 40px;
+  text-align: center;
+  border-color: black;
+}
+.pre{
+  width: 130px;
+  background-color:rgb(21, 174, 235);
+  border-bottom-left-radius: 5px;
+  border-color: black;
+}
+.uv{
+  width:20px;
+  background-color:rgb(73, 73, 179);
+  margin-left: 130px;
+  margin-top: -21.5px;
+  border-bottom-right-radius: 5px;
+  border-color: black;
+}
+.espacio{
+  margin-bottom: 10px;
+}
 body {
-  margin: 0;
+  margin-left: 5px;
 }
 article,
 aside,

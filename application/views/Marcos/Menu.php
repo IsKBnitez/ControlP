@@ -12,9 +12,7 @@
                         <a href="<?php echo base_url(); ?>cAdmin"><i class="glyphicon glyphicon-user"></i>  Gestion de Alumnos</a>
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url(); ?>cAdmin1"><i class="glyphicon glyphicon-briefcase"></i> Gestion de Docentes</a>
-                    </li>
+                    
                     <li>
                         <a href="<?php echo base_url(); ?>cnMateria"><i class="glyphicon glyphicon-education"></i> Gestion de Materias</a>
                     </li>
@@ -25,7 +23,7 @@
                         <a href="<?php echo base_url(); ?>cAsignP"><i class="fa fa-fw fa-edit"></i> Asignación Pre-Requisitos</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>cInscriA"><i class="glyphicon glyphicon-font"></i> Inscripcion de alumnos</a>
+                    <a href="<?php echo base_url();?>cPensum" target="_blank"><i class="glyphicon glyphicon-th"> </i> Pensum  </a>
                     </li>
 
 

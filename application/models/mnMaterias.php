@@ -43,6 +43,20 @@ class mnmaterias extends CI_Model
       return $this->db->insert("materia",$data);
 
   }
+
+  public function actualizarmaterias($id){
+    $this->db->where("id_materia",$id);
+    $resultados =  $this->db->get("materia");
+    return $resultados->row(); 
+  }
+
+  public function update($id,$data){
+    $this->db->where("id_materia",$id);
+   return $this->db->update("materia",$data);
+
+
+  }
+
    
 }
 ?>

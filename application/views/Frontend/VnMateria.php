@@ -47,14 +47,17 @@
                             <form class="" id="form" action="<?php echo base_url();?>cnMateria/guardar" method="post">
                               <table class="table-responsive">
                               <?php if($this->session->flashdata("Done")): ?>
-                                <div class="alert alert-success">
-                                 <strong>Success!</strong> Indicates a successful or positive action.
+                                <div class="alert alert-success" id="alert">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                 <strong>Exito!</strong> Se registraron los datos correctamente.
                                 </div>
+
                                 <?php endif; ?>
                                 <?php if($this->session->flashdata("Error")):?>
                                 
-                                    <div class="alert alert-danger">
-                                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                                    <div class="alert alert-danger" id="alerte">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Error!</strong> Error al registrar los datos.
                                     </div>
                                 <?php endif;?>
                                 
@@ -137,8 +140,9 @@
                             </button>
                             <ul class="dropdown-menu">
                                
-                                <li ><a href="#" class="">Habilitar</a></li>
-                                <li><a href="#"  class="">Ocultar</a></li>
+                                <li ><a href="#" >Habilitar</a></li>
+                                <li><a href="<?php echo base_url();?>cnMateria/edit/<?php echo $matef->id_materia;?>">Actualizar</a></li>
+                                <li><a href="#">Eliminar</a></li>
                                 
                             </ul>
                         </div>
@@ -153,10 +157,8 @@
                         
                         </table>
                         
-                        
-                        
-                        
-                        
+                        <!-- Modal -->
+
                         </div>
                         
                         </div>
@@ -167,7 +169,7 @@
                           <div class="col-lg-12">
                             <div class="panel-body">
                                 <h3 class="text-center text-success">Materias Vigentes</h3>
-                            <table id="example1" class="table table-bordered" >
+                            <table  class="table table-bordered" id="example2">
                                 <thead>
                                     <tr>
                                     <th class="text-center">#</th>
@@ -195,7 +197,9 @@
                                             Acciones <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"  class="">Ocultar</a></li>  
+                                            <li><a href="#"  class="">Ocultar</a></li> 
+                                            <li><a href="#">Actualizar</a></li>
+                                            <li><a href="#">Eliminar</a></li>
                                         </ul>
                                     </div>                                   
                                     </td>
@@ -210,54 +214,7 @@
 
 
 
-                                  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Actualizar datos</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                          <form id="frmmodificar" class="" action="<?php echo base_url();?>cMateria/modificar" method="post">
-                                            <table class="table-responsive">
-                                              <div class="form-group">
-
-                                                  <input class="form-control" id="id2" name="id2" type="hidden">
-                                              </div>
-                                              <div class="form-group">
-                                                  <label>Codigo</label>
-                                                  <input class="form-control" id="codigo2" placeholder="Codigo" name="codigo2">
-                                              </div>
-                                              <div class="form-group">
-                                                  <label>Nombre</label>
-                                                  <input class="form-control" id="nombre2" placeholder="Nombre" name="nombre2">
-                                              </div>
-                                              <div class="form-group">
-                                              <label>UV</label>
-                                              <select name="uv2" id="uv2" class="form-control cent">
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              </select>
-                                          </div>
-                                              <div class="form-group">
-                                                  <label>Facultad</label>
-                                                  <select class="form-control cent" name="tp2" id="tp2">
-                                                    <option value="0">:::Elija una opcion:::</option>
-                                                  </select>
-                                                  <input type="hidden" name="idcb2" id="idcb2" value="">
-                                              </div>
-                                              <div class="form-group cent">
-                                                  <button type="button" class="btn btn-primary btn-block" id="btnmodificar"  name="button"data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span>Actualizar</button>
-                                              </div>
-                                            </table>
-                                          </form>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  
                                   <!-- /.panel-body -->
                               </div>
                               <!-- /.panel -->

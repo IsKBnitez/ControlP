@@ -16,7 +16,7 @@
                         <a href="<?php echo base_url(); ?>cAdmin1"><i class="glyphicon glyphicon-briefcase"></i> Gestion de Docentes</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>cMateria"><i class="glyphicon glyphicon-education"></i> Gestion de Materias</a>
+                        <a href="<?php echo base_url(); ?>cnMateria"><i class="glyphicon glyphicon-education"></i> Gestion de Materias</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>cPrere"><i class="glyphicon glyphicon-th-list"></i> Pre-Requisitos</a>

@@ -54,6 +54,50 @@ class cnMateria extends CI_Controller
     }
   }
 
+  public function edit($id){
+
+    $data = array(
+      'materia' => $this->mnMaterias->actualizarmaterias($id),
+      'facultad' => $this->mnMaterias->consultarfacultad() ,
+     );
+    $this->load->view('Marcos/Encabezado');
+    $this->load->view('Marcos/Menu');
+    $this->load->view('Frontend/vnMateriae',$data);
+    $this->load->view('Marcos/Piepagina');
+
+  }
+
+  public function actualizar(){
+    $id = $this->input->post("id2");
+    $codigo = $this->input->post("codigo2");
+    $nombre = $this->input->post("nombre2");
+    $uv = $this->input->post("uv");
+    $facultad = $this->input->post("tp");
+
+    $data = array(
+      'codigo' => $codigo,
+      'nombre' => $nombre,
+      'uv' => $uv,
+      'id_facultad' => $facultad,
+      
+    );
+
+    if ($this->mnMaterias->update($id,$data)== true) {
+      $this->session->set_flashdata("Done","Informacion actualizada correctamente");
+      redirect(base_url()."cnMateria");
+
+    }
+    else{
+      $this->session->set_flashdata("Error","No se pudo actualizar la informacion");
+      redirect(base_url()."cnMateria/vnMateriae".$id);
+    }
+
+
+
+  }
+
+  
+
   
 }
 ?>

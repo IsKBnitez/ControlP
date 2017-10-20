@@ -57,6 +57,8 @@ class mnmaterias extends CI_Model
 
   }
 
+  
+
    
 }
 ?>

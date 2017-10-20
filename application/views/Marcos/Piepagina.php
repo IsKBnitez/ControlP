@@ -16,6 +16,41 @@
 
     <script>
     $(document).ready(function () {
+
+        var base_url = "<?php echo base_url(); ?>";
+        $('#ocultar').on("click", function(e){
+            e.preventDefault();
+            var ruta = $(this).attr("href");
+            
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                success:function(resp){
+                window.location.href = base_url + resp;            
+                }
+
+
+
+            });
+        });
+
+        $('#mostrar').on("click", function(e){
+            e.preventDefault();
+            var ruta = $(this).attr("href");
+            
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                success:function(resp){
+                window.location.href = base_url + resp;            
+                }
+
+
+
+            });
+        });
+
+
        $('#example1').DataTable();
        $('#example2').DataTable();
        $('.sidebar-menu').tree(); 

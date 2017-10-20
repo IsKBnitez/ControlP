@@ -140,9 +140,10 @@
                             </button>
                             <ul class="dropdown-menu">
                                
-                                <li ><a href="#" >Habilitar</a></li>
+                                <li ><a href="<?php echo base_url(); ?>cnMateria/delete/<?php echo $matef->id_materia; ?>" id="ocultar" >Deshabilitar</a></li>
+                                <li ><a href="<?php echo base_url(); ?>cnMateria/mostrar/<?php echo $matef->id_materia; ?>" id="mostrar" >Habilitar</a></li>
                                 <li><a href="<?php echo base_url();?>cnMateria/edit/<?php echo $matef->id_materia;?>">Actualizar</a></li>
-                                <li><a href="#">Eliminar</a></li>
+                                
                                 
                             </ul>
                         </div>
@@ -197,9 +198,8 @@
                                             Acciones <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"  class="">Ocultar</a></li> 
-                                            <li><a href="#">Actualizar</a></li>
-                                            <li><a href="#">Eliminar</a></li>
+                                        <li ><a href="<?php echo base_url(); ?>cnMateria/delete/<?php echo $matef->id_materia; ?>" id="ocultar" >Deshabilitar</a></li>
+                                        <li><a href="<?php echo base_url();?>cnMateria/edit/<?php echo $matef->id_materia;?>">Actualizar</a></li>                                           
                                         </ul>
                                     </div>                                   
                                     </td>

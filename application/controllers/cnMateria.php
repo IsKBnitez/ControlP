@@ -96,6 +96,27 @@ class cnMateria extends CI_Controller
 
   }
 
+  public function delete($id){
+    $data = array(
+      'estado' => "0" , 
+    );
+    if($this->mnMaterias->update($id,$data) == true)
+    {
+      redirect(base_url()."cnMateria");
+    }
+    
+  }
+
+  public function mostrar($id){
+    $data = array(
+      'estado' => "1" , 
+    );
+    if($this->mnMaterias->update($id,$data)==true){
+      redirect(base_url()."cnMateria");
+    }
+    
+  }
+
   
 
   

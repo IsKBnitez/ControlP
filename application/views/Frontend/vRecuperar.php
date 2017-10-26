@@ -35,7 +35,6 @@
 	.caja{
 		margin-top: 15%;
 	}
-    .cente{ text-align: right;}
 </style>
 </head>
 
@@ -46,39 +45,18 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Ingrese porfavor</h3>
+                        <h3 class="panel-title">Aqui podra recuperar su contraseña</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" id="form" method="post" action="<?php echo base_url(); ?>cLogin/Ingresar">
+                        <form role="form" id="form" method="post" action="<?php echo base_url(); ?>cRecuperar/sendMailGmail">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usuario" name="uss" type="user" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="email" type="user" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" name="contra" type="password" value="">
+                                    <input class="form-control" placeholder="Confirmacion E-mail" name="contra" type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Recordarme
-                                    </label>
-                                </div>
-
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Iniciar</button>
-                                <br>
-                                <a class="cente" href="<?php echo base_url(); ?>cRecuperar">
-                                        recuperar contraseña
-                                </a>
-                                <script src="<?php echo base_url(); ?>js/alertify.js"></script>
-                                <?php
-                                if($this->uri->segment(2)=='Ingresar'){
-                                  if($men=="Verifique sus datos"){
-                                    echo "<script>
-                                                  alertify.error('$men');
-                                    </script>";
-                                  }
-                              }
-
-                                ?>
+                                <button type="submit" name="submit" class="btn btn-lg btn-success btn-block">Enviar</button>
                             </fieldset>
                         </form>
                     </div>

@@ -2,9 +2,9 @@ $(document).on("ready",inicio);
 
 function inicio() {
 
-Consultar1("");
-Consultar2("");
-Consultar("");
+
+ConsultarMateria("");
+ConsultarMateriaPre("");
 $("form").submit(function (event){
   event.preventDefault();
 
@@ -17,7 +17,6 @@ $("form").submit(function (event){
           alertify.success(respuesta);
         Consultar1("");
         Consultar2("");
-
            limpiar();
       }
       else{
@@ -28,6 +27,28 @@ $("form").submit(function (event){
 });
 }
 
+$("body").on("click", "#tablamateria a", function(event) {
+  event.preventDefault();
+  id = $(this).parent().parent().children("td:eq(1)").text();
+  //consultas datos de la materia---
+  ConsultarMateriaparacuadro(id);
+
+  //comsultar prerequisitos
+  
+});
+
+$("body").on("click", "#tablaprerequisitos a", function(event) {
+  event.preventDefault();
+  id = $(this).parent().parent().children("td:eq(1)").text();
+
+  //consultas datos de la materia---
+  ConsultarPrereparacuadro(id);
+
+  //comsultar prerequisitos
+  
+});
+
+/*
 $("body").on("click", "#tbla1 a", function(event) {
     event.preventDefault();
     nombre = $(this).parent().parent().children("td:eq(1)").text();
@@ -47,75 +68,113 @@ $("body").on("click", "#tbla1 a", function(event) {
         $("#materia2").val(nombre1);
         $("#pre2").val(nombre2);
       });
-
+*/
 
     function limpiar() {
       $("#materia").val("");
       $("#pre").val("");
     }
 
-    function Consultar(valor) {
-        $.ajax({
-          url: url+"cAsignP/consultar3",
-          type: "POST",
-          data:{buscar:valor},
-          success:function(respuesta) {
-            //alert(respuesta);
-            var registros = eval(respuesta);
-            html ="<table class='table table-striped ' id='tbla3'><thead>";
-            html +="<tr><th>#</th><th>N° Registro</th><th>Materia</th><th>Pre-requisito</th><th>Acciones</th></tr>";
-            html +="</thead>  <tbody>";
-            for (var i = 0; i < registros.length; i++) {
-              html+="<tr><td></td><td>"+registros[i]["id"]+"</td><td>"+registros[i]["n1"]+"</td><td>"+registros[i]["n2"]+"</td><td><button class='btn btn-danger' value='"+registros[i]["id"]+"'>X</button></td></tr>";
-            };
-            html +="</tbody></table>";
-            $("#tabla3").html(html);
-          }
-        });
-    }
-function Consultar1(valor) {
+
+   /* function ConsultarMateriaparacuadro(valor) {
+      $.ajax({
+        url: url+"cAsignP/consultarMac",
+        type: "POST",
+        data:{buscar:valor},
+        success:function(respuesta) {
+          //alert(respuesta);
+          var registros = eval(respuesta);
+         
+          for (var i = 0; i < registros.length; i++) {
+            //html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["nombre"]+"</td><td><a id='enviom' class='btn btn-info glyphicon glyphicon-check'></a></td></tr>";
+            html ="<div class='codigo'>"+registros[i]["codigo"]+"</div>";
+            html +="<div class='id'>"+registros[i]["id_materia"]+"</div>";
+            html +="<div id='nombrec' class='nombre'>"+registros[i]["nombre"]+"</div>";
+            html +="<div class='pre'>sdfsdfsd</div>";
+            html +="<div class='uv'>"+registros[i]["uv"]+"</div>";
+          };
+          html +="</tbody></table>";
+          $("#tablamateria").html(html); 
+        }
+      });
+  }*/
+
+
+
+    function ConsultarMateria(valor) {
+      $.ajax({
+        url: url+"cAsignP/consultarMa",
+        type: "POST",
+        data:{buscar:valor},
+        success:function(respuesta) {
+          //alert(respuesta);
+          var registros = eval(respuesta);
+          html ="<table class='table table-striped ' id='resultados'><thead>";
+          html +="<tr><th>#</th><th>N° Registro</th><th>Nombre materia</th><th>Operacion</th></tr>";
+          html +="</thead>  <tbody>";
+          for (var i = 0; i < registros.length; i++) {
+            html+="<tr><td></td><td>"+registros[i]["id_materia"]+"</td><td>"+registros[i]["nombre"]+"</td><td><a id='enviom' class='btn btn-info glyphicon glyphicon-check'></a></td></tr>";
+          };
+          html +="</tbody></table>";
+          $("#tablamateria").html(html); 
+        }
+      });
+  }
+
+  function ConsultarMateriaparacuadro(valor) {
     $.ajax({
-      url: url+"cAsignP/consultar1",
+      url: url+"cAsignP/consultarMac",
       type: "POST",
       data:{buscar:valor},
       success:function(respuesta) {
         //alert(respuesta);
         var registros = eval(respuesta);
-        html ="<form>"
-        html +="<table class='table table-striped ' id='tbla1'><thead>";
-        html +="<tr><th>Acciones</th><th>Nombre Materia</th></tr>";
-        html +="</thead>  <tbody>";
         for (var i = 0; i < registros.length; i++) {
-
-          html+="<tr><td><a id='"+registros[i]["id_materia"]+"' class='btn btn-warning'>M</a></td><td>"+registros[i]["nombre"]+"</td></tr>";
-        };
-        html +="</tbody></table></form>";
-        $("#tabla").html(html);
+        $('#idm').text(registros[i]["id_materia"]);
+        $('#nmm').text(registros[i]["nombre"]);
+        $('#codigom').text(registros[i]["codigo"]);
+        $('#uvm').text(registros[i]["uv"]);
+        
+       }
       }
     });
 }
 
-function Consultar2(valor) {
+function ConsultarPrereparacuadro(valor) {
+  $.ajax({
+    url: url+"cAsignP/consultarPrec",
+    type: "POST",
+    data:{buscar:valor},
+    success:function(respuesta) {
+      //alert(respuesta);
+      var registros = eval(respuesta);
+      for (var i = 0; i < registros.length; i++) {
+      $('#prerem').text(registros[i]["nombre"]);     
+     }
+    }
+  });
+}
+
+  function ConsultarMateriaPre(valor) {
     $.ajax({
-      url: url+"cAsignP/consultar2",
+      url: url+"cAsignP/consultarpre",
       type: "POST",
       data:{buscar:valor},
       success:function(respuesta) {
         //alert(respuesta);
         var registros = eval(respuesta);
-        html ="<table class='table table-striped ' id='tbla2'><thead>";
-        html +="<tr><th>Acciones</th><th>Nombre Pre-requisito</th></tr>";
+        html ="<table class='table table-striped ' id='resultados'><thead>";
+        html +="<tr><th>#</th><th>N° Registro</th><th>Nombre materia</th><th>Operacion</th></tr>";
         html +="</thead>  <tbody>";
         for (var i = 0; i < registros.length; i++) {
-
-          html+="<tr><td><a id='"+registros[i]["id_pre"]+"' class='btn btn-warning'>P</a></td><td>"+registros[i]["nombre"]+"</td></tr>";
+          html+="<tr><td></td><td>"+registros[i]["id_pre"]+"</td><td>"+registros[i]["nombre"]+"</td><td><a class='btn btn-info glyphicon glyphicon-check'></a></td></tr>";
         };
         html +="</tbody></table>";
-        $("#tabla2").html(html);
-        $("#tabla4").html(html);
+        $("#tablaprerequisitos").html(html); 
       }
     });
 }
+
 $("body").on("click", "#tbla3 button", function(event) {
     event.preventDefault();
     id = $(this).attr("value");

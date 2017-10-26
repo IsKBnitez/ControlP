@@ -16,7 +16,7 @@ class Casignp extends CI_Controller
     $this->load->view('Frontend/vAsignacionpre');
     $this->load->view('Marcos/Piepagina');
   }
-
+/*
   public function consultar1()
   {
     if ($this->input->is_ajax_request()) {
@@ -44,6 +44,50 @@ class Casignp extends CI_Controller
     if ($this->input->is_ajax_request()) {
       $buscar=$this->input->post("buscar3");
       $datos = $this->mAsignP->consultar3($buscar);
+      echo json_encode($datos);
+    }
+    else {
+      show_404();
+    }
+  }*/
+
+  public function consultarMa(){
+    if ($this->input->is_ajax_request()) {
+      $buscar=$this->input->post("buscar");
+      $datos = $this->mAsignP->consultarM($buscar);
+      echo json_encode($datos);
+    }
+    else {
+      show_404();
+    }
+  }
+
+  public function consultarMac(){
+    if ($this->input->is_ajax_request()) {
+      $buscar=$this->input->post("buscar");
+      $datos = $this->mAsignP->consultarMc($buscar);
+      echo json_encode($datos);
+    }
+    else {
+      show_404();
+    }
+  }
+
+  public function consultarPrec(){
+    if ($this->input->is_ajax_request()) {
+      $buscar=$this->input->post("buscar");
+      $datos = $this->mAsignP->consultarPc($buscar);
+      echo json_encode($datos);
+    }
+    else {
+      show_404();
+    }
+  }
+
+  public function consultarpre(){
+    if ($this->input->is_ajax_request()) {
+      $buscar=$this->input->post("buscar");
+      $datos = $this->mAsignP->consultarPre($buscar);
       echo json_encode($datos);
     }
     else {

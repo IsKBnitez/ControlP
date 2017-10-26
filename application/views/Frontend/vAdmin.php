@@ -23,7 +23,17 @@
       }
 
     </style>
-  </head>
+    
+   <script type="text/javascript">
+  
+
+   jQuery('#datetimepicker3').datetimepicker({
+  format:'d.m.Y H:i',
+  inline:true,
+  lang:'ru'
+});
+
+</script>
   <body>
     <div class="row">
         <div class="col-lg-12">
@@ -76,10 +86,7 @@
 
                                     </select>
 
-                                </div>
-                                <div class="form-group">
-                                    <label>Edad</label>
-                                    <input class="form-control" id="edad" placeholder="Edad" name="edad" type="number" min="0" max="90" required="true">
+                                </div>        
                                 </div>
                                 <div class="form-group">
                                     <label>Numero Telefonico</label>
@@ -88,6 +95,7 @@
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input class="form-control" id="ema" placeholder="E-mail" name="ema" type="email" required="true">
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label>Usuario</label>
@@ -212,6 +220,10 @@
         </div>
         <!-- /.col-lg-6 -->
   </body>
-
+  <script type="text/javascript">
+            jQuery('#image_button').click(function(){
+                jQuery('#datetimepicker4').datetimepicker('show'); //support hide,show and destroy command
+              });
+        </script>
 
 </html>

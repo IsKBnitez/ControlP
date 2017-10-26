@@ -7,7 +7,7 @@ class Masignp extends CI_Model
     parent::__construct();
   }
 
-  public function consultar1($valor)
+  /*public function consultar1($valor)
   {
     $consulta = $this->db->query("select id_materia, nombre  from materia where not exists(select id_materia from asignpre where materia.id_materia=asignpre.id_materia);");
     return $consulta->result();
@@ -20,6 +20,29 @@ class Masignp extends CI_Model
   public function consultar3($valor)
   {
     $consulta = $this->db->query("select a.id_aspre as id, b.nombre as n1, c.nombre as n2 from asignpre a inner join materia b on a.id_materia = b.id_materia inner join prerequisito c on a.id_pre = c.id_pre where b.nombre like '%".$valor."%';");
+    return $consulta->result();
+  }*/
+
+  public function consultarM($valor)
+  {
+    $consulta = $this->db->query("select id_materia, nombre  from materia where not exists(select id_materia from asignpre where materia.id_materia=asignpre.id_materia);");
+    return $consulta->result();
+  }
+
+  public function consultarMc($valor)
+  {
+    $consulta = $this->db->query("select *  from materia where not exists(select id_materia from asignpre where materia.id_materia=asignpre.id_materia) and materia.id_materia='".$valor."';");
+    return $consulta->result();
+  }
+  public function consultarPre($valor)
+  {
+    $consulta = $this->db->query("select id_pre, nombre from prerequisito;");
+    return $consulta->result();
+  }
+
+  public function consultarPc($valor)
+  {
+    $consulta = $this->db->query("select id_pre, nombre from prerequisito where id_pre='".$valor."';");
     return $consulta->result();
   }
 

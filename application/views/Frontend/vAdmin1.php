@@ -75,10 +75,9 @@
                                       <option value="Femenino">Femenino</option>
 
                                     </select>
-
                                 </div>
                                 <div class="form-group">
-                                    <label>Edad</label>
+                                    <label>Fecha de nacimiento</label>
                                     <input class="form-control" id="edad" placeholder="Edad" name="edad" type="number" min="0" max="90" required="true">
                                 </div>
                                 <div class="form-group">
@@ -91,17 +90,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Usuario</label>
-                                    <style media="screen">
-                                      #uss{
-                                        text-align: center;
-                                      }
-                                      #uss2{
-                                        text-align: center;
-                                      }
-                                    </style>
                                     <input class="form-control" id="uss" placeholder="Usuario" readonly="readonly"  name="uss"  required="true">
-                                </div>
-                              </div>
+                                </div>                    
+                            
+        
                               </table>
                               <div class="col-lg-12">  <div class="form-group cent">
                                     <button type="submit" class="btn btn-primary" name="button">Guardar</button>

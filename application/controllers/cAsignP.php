@@ -50,7 +50,7 @@ class Casignp extends CI_Controller
       show_404();
     }
   }*/
-
+  // selecciona el nombre y el id de la materia
   public function consultarMa(){
     if ($this->input->is_ajax_request()) {
       $buscar=$this->input->post("buscar");
@@ -108,7 +108,7 @@ class Casignp extends CI_Controller
     if($this->mAsignP->guardar($datos)==true){
     echo "Registros Guardados";
   }
-    else{    echo "anda caga";}
+    else{    echo "Error";}
   }
   else{
     show_404();

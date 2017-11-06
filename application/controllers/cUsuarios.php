@@ -8,6 +8,9 @@ class Cusuarios extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('form_validation');
+    $this->load->helper('form');
+    
     $this->load->model('mUsuario');
   }
 
@@ -24,25 +27,45 @@ class Cusuarios extends CI_Controller
     $result = $this->mUsuario->tipousuario();
     echo json_encode($result);
   }
+
+
+
   public function guardar()
   {
-    if($this->input->is_ajax_request()){
-    $nombre= $this->input->post("usuario");
-    $contra=$this->input->post("contra");
-    $tipo = $this->input->post("idcb");
-    $datos=array(
-      'usuario' =>$nombre,
-      'contra' =>$contra,
-      'id_tpus' =>$tipo,  );
-    if($this->mUsuario->guardar($datos)==true)
-    echo "Registros Guardados";
+    $this->form_validation->set_rules('usuario','usuario','trim|required|is_unique[usuario.usuario]');
+
+    if($this->form_validation->run()==FALSE)
+    {
+      echo"Usuario Existente";
+    }
     else
-    echo "Error al Registrar";
-  }
-  else{
-    show_404();
-  }
-}
+    {
+      
+      $nombre= $this->input->post("usuario");
+      $contra=$this->input->post("contra");
+      $tipo = $this->input->post("idcb");
+      $datos=array(
+        'usuario' =>$nombre,
+        'contra' =>$contra,
+        'id_tpus' =>$tipo,  );
+  
+        if($this->mUsuario->guardar($datos)==true)
+        echo "Registros Guardados";
+        else
+        echo "Error al Registrar";
+
+    }
+
+
+    /*if($this->input->is_ajax_request()){
+  
+    }
+    else{
+      show_404();
+    }*/
+
+    }
+
   public function consultar()
   {
     if ($this->input->is_ajax_request()) {

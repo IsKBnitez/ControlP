@@ -44,23 +44,16 @@
 					<li>
 						<div class="ch-item ch-img-1a">
 							<div class="ch-info">
-								<h3>Pensum</h3>
+								<h3><a href="<?php echo base_url();?>cPensum" target="_blank">Pensum</a></h3>
 								<p>Visualiza tus materias y lleva un control</p>
 							</div>
 						</div>
 					</li>
-					<li>
-						<div class="ch-item ch-img-2a">
-							<div class="ch-info">
-								<h3>Materias Inscritas</h3>
-								<p>Visualiza tus materias inscritas</p>
-							</div>
-						</div>
-					</li>
+					
           <li>
             <div class="ch-item ch-img-3a">
               <div class="ch-info">
-                <h3>Salir</h3>
+                <h3><a href="<?php echo base_url();?>cLogin/salir">Salir</a></h3>
                 <p>Salir</p>
               </div>
             </div>

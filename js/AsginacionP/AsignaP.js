@@ -100,7 +100,7 @@ $("body").on("click", "#tbla1 a", function(event) {
   }*/
 
 
-
+  // este sirve para consultar el nombre de la materia y el id
     function ConsultarMateria(valor) {
       $.ajax({
         url: url+"cAsignP/consultarMa",
@@ -117,7 +117,7 @@ $("body").on("click", "#tbla1 a", function(event) {
           };
           html +="</tbody></table>";
           $("#tablamateria").html(html); 
-        }
+        }   
       });
   }
 

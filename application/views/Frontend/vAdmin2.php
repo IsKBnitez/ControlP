@@ -78,8 +78,9 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Edad</label>
-                                    <input class="form-control" id="edad" placeholder="Edad" name="edad" type="number" min="0" max="90" required="true">
+                                    <label>Edad</label><br>
+                                    <input type="date" name="edad" id="edad" value="<?php echo date("Y-m-d");?>">
+                                    <!-- <input class="form-control" id="edad" placeholder="Edad" name="edad" type="number" min="0" max="90" required="true"> -->
                                 </div>
                                 <div class="form-group">
                                     <label>Numero Telefonico</label>

@@ -73,21 +73,25 @@
                                     <label>Seleccione una imagen</label>
                                     <input type="file" class="" id="fotos" placeholder="Apellido" name="fotos" >
                                 </div>
+                                </div>
 
-                              </div>
+                              
                               <div class="col-lg-6">
-                                &nbsp;
+                               
                                 <div class="form-group">
                                     <label>Sexo</label>
                                     <select class="form-control cent" name="sexo" id="sexo" required="true">
                                       <option value="0">:::Seleccione su genero:::</option>
                                       <option value="Masculino">Masculino</option>
                                       <option value="Femenino">Femenino</option>
-
                                     </select>
-
-                                </div>        
+                                </div> 
+                                <div class="form-group">
+                                <label>Fecha de nacimiento</label>
+                                <input class="form-control" id="edad" placeholder="Edad" name="edad" type="date" value="<?php echo date("Y-m-d");?>">
                                 </div>
+
+                                
                                 <div class="form-group">
                                     <label>Numero Telefonico</label>
                                     <input class="form-control" id="tel" placeholder="Telefono" name="tel" required="true">

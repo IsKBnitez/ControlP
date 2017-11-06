@@ -67,6 +67,7 @@
                                     <div id="uvm" class="uv"></div>
                                     <div class="col-lg-2" id="tablacentro"></div>
                                     <div class="col-lg-2" id="tablacentro"></div>
+
                                     <button class="btn btn-success">Guardar</button>
                                     </div>
                                 

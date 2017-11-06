@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="form-control" id="contra" placeholder="Contraseña" name="contra">
+                                    <input type="password" class="form-control" id="contra" placeholder="Contraseña" name="contra">
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de usuario</label>
